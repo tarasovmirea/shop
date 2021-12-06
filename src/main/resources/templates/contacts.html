@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AQUASHOP</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles/styles.css" th:href="@{/styles/styles.css}">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<div id="wrapper">
+    <header style="background-color: #29c5e6">
+    </header>
+    <nav>
+        <ul class="top-menu">
+            <li><a th:href="@{/}">ГЛАВНАЯ</a></li>
+            <li><a th:href="@{/catalog}">КАТАЛОГ</a></li>
+            <li><a th:href="@{/cart}">КОРЗИНА</a></li>
+            <li class="active">КОНТАКТЫ</li>
+            <li><a class="nav-item nav-link disabled" sec:authorize="isAuthenticated()" th:href="@{/{id}(id=${#authentication.getPrincipal().getId()})}" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a></li>
+            <li class="auth" sec:authorize="isAnonymous()">
+                <a href="/login" th:href="@{/login}" class="btn-login">Log In </a>
+                <br>
+                <a th:href="@{/registration}" class="btn-register"> Register</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="heading">
+        <h1>AQUASHOP</h1>
+        <a href="/"><img th:src="@{/images/logo.png}" alt="Whitesquare logo" width="50" height="50"></a>
+    </div>
+
+    <aside>
+        <!--        <nav>-->
+        <!--            <ul class="aside-menu">-->
+        <!--                <li class="active">LOREM IPSUM</li>-->
+        <!--                <li><a href="/donec/">DONEC TINCIDUNT LAOREET</a></li>-->
+        <!--                <li><a href="/vestibulum/">VESTIBULUM ELIT</a></li>-->
+        <!--                <li><a href="/etiam/">ETIAM PHARETRA</a></li>-->
+        <!--                <li><a href="/phasellus/">PHASELLUS PLACERAT</a></li>-->
+        <!--                <li><a href="/cras/">CRAS ET NISI VITAE ODIO</a></li>-->
+        <!--            </ul>-->
+        <!--        </nav>-->
+        <h2>НАШ МАГАЗИН</h2>
+        <p><img th:src="@{/images/shop.jfif}" width="230" height="180" alt="Our shop"></p>
+    </aside>
+    <section>
+        <blockquote>
+
+        </blockquote>
+        <h2>КОНТАКТЫ</h2>
+        <p>Наш магазин находится по адресу: г.Город, ул. Улица, д.##, вход со двора</p>
+        <img th:src="@{/images/map.png}" width="680" height="auto" alt="">
+
+    </section>
+</div>
+<footer>
+    <div id="footer">
+
+        <div id="footer-logo">
+            <!--            <a href="/"><img src="" alt="logo"></a>-->
+            <p>Copyright © 2021 Тарасов Дмитрий Сергеевич creation</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
